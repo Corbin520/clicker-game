@@ -1,0 +1,11 @@
+.navbar-title, .navbar-score, .navbar-current-score {
+    text-align: center;
+    color: white;
+    font-size: 40px
+
+}
+
+.navbar {
+    background-color: #647298;
+    
+}

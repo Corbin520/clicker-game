@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/react-click-game/static/css/main.cd5c61ef.chunk.css",
+    "main.js": "/react-click-game/static/js/main.b175005f.chunk.js",
+    "main.js.map": "/react-click-game/static/js/main.b175005f.chunk.js.map",
+    "runtime~main.js": "/react-click-game/static/js/runtime~main.d3fbd864.js",
+    "runtime~main.js.map": "/react-click-game/static/js/runtime~main.d3fbd864.js.map",
+    "static/js/2.6efc73d3.chunk.js": "/react-click-game/static/js/2.6efc73d3.chunk.js",
+    "static/js/2.6efc73d3.chunk.js.map": "/react-click-game/static/js/2.6efc73d3.chunk.js.map",
+    "index.html": "/react-click-game/index.html",
+    "precache-manifest.432386307783e5d5ae78d35f4f3cf955.js": "/react-click-game/precache-manifest.432386307783e5d5ae78d35f4f3cf955.js",
+    "service-worker.js": "/react-click-game/service-worker.js",
+    "static/css/main.cd5c61ef.chunk.css.map": "/react-click-game/static/css/main.cd5c61ef.chunk.css.map"
+  }
+}
