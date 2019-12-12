@@ -1,0 +1,134 @@
+  // function for clickers
+  imageClicked = id => {
+
+
+    const imageClick = id
+
+    // Taking our state and storing it to these variables
+    const status = this.state.clickers
+    const clicked = this.state.clickers
+    // console.log("Clicked: " + clicked)
+
+    // index gets reassigned to this at the bottom of the function
+    let indexOfCardClicked; // = whatever the index of the array was clicked
+
+
+    // We are doing a .find() on our clickers (object with all our image data in it)
+
+
+    // find the card object on state 
+    clicked.find(function (element, index) {
+      if (element.id === imageClick) {
+
+
+        // Element = is the object we get back with the data for our clicker we clicked on
+        // console.log("id: " + id) // || console.log(element.id) = same output
+
+        // Index = is the index of the array. The index is set, it will not change, but the item in its index[0] will. 
+          // when the app starts, the CSS-Image will be in index[0], but after an image is clicked, the index will hold a new image
+        // console.log("index: " + index) 
+
+
+
+        // This loop will loop over our array of items clicked and compair them.
+        for (var i = 0; i < alreadyClicked.length; i++) {
+          if (alreadyClicked[i] === id) {
+
+            // Here is where we need to update our state
+
+
+            // returns false on page load, we want it to turn true if they already clicked the sane image
+            status[index].buttonClicked = true;
+            console.log("You lost")
+          }
+          
+        }
+
+        // pushing the ID of the item that is clicked to our array
+        alreadyClicked.push(id)
+
+        // already clicked is our array of items we already clicked on
+        // console.log(alreadyClicked)
+
+
+
+        // return the index that was clicked
+        // index will become the "returnedArray" variable (let)
+        indexOfCardClicked = index;
+
+        console.log("index of card clicked: " + indexOfCardClicked)
+
+        return index;
+
+
+      } else {
+
+        // return false if not.
+        return false;
+
+      }
+
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // if we change this to true, it will run the if statment that calls our game over function
+
+    // This returns "false" when the page loads
+    const test = clicked[indexOfCardClicked].buttonClicked
+    console.log("test: " + test)
+
+
+
+
+
+
+
+
+    // This will shuffle the items
+
+
+    // see if it has been clicked
+    // if its === true (has been clicked) call "gameOver" & reset
+
+
+
+    // if statment. clicked = the item clicked
+
+    // Whats it checking?
+      // clicked @ [index] of the index the image is at. Remember that it changes the value each time its clicked
+      // asking if its true
+
+      // ELSE = +1 to the score and shuffle the clickers
+    if (clicked[indexOfCardClicked].buttonClicked === true) {
+
+      // Call the game over function
+      this.gameOver()
+      console.log("True Statement is running")
+
+    } else {
+      // Adding 1 to the score for each click
+      this.setState({ score: this.state.score + 1 })
+      // console.log(this.state.score)
+
+      // console.log("test")
+
+      //shuffle the clickers
+      this.state.clickers.sort(() => Math.random() - 0.5)
+
+
+    }
+
+
+  }
