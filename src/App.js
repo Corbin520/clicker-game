@@ -24,16 +24,15 @@ import Header from "./components/Header"
 var alreadyClicked = []
 
 
-// import Footer from "./components/Footer"
 
 class App extends Component {
 
-  // Setting this.state.friends to the friends json array
+
   state = {
     clickers,
     score: 0,
     highscore: 0,
-    maxscore: 12
+    maxscore: 15
 
   };
 
@@ -47,16 +46,19 @@ class App extends Component {
 
     // set the score to 0
     this.setState({ score: this.state.score = 0 })
+
+    alert("You Lost")
     
   }
 
+  youWon = () => {
+    alert("YOU WON!!!!!")
+    console.log("youWon function fired off")
+    window.location.reload()
+  }
 
 
-  // what is clickers
-
-
-
-
+  
 
 
 // High Level of this function: imageClicked() 
@@ -65,7 +67,7 @@ class App extends Component {
   // 2) if (the element.id is the same as the imageClicked (===) then run the following block of code)
   // 3) Once the item is clicked, push it to an array to keep track of which ones have been clicked
   // 4) check the user choice and see if the array has that choice already
-    // IF so, change the status to "TRUE" && if its "TRUE" call the gameOver() function
+    // IF so, change the status of "buttonClicked" to "TRUE" && if its "TRUE" call the gameOver() function
   // 5) if it has not been clicked yet, call our else statement and shuffle the clickers.
 
 
@@ -86,6 +88,7 @@ class App extends Component {
     clicked.find(function (element, index) {
       if (element.id === imageClick) {
 
+        console.log("You Clicked ID: " + id)
 
         // This loop will loop over our array of items clicked and compair them.
         for (var i = 0; i < alreadyClicked.length; i++) {
@@ -94,7 +97,7 @@ class App extends Component {
 
             // returns false on page load, we want it to turn true if they already clicked the sane image
             status[index].buttonClicked = true;
-            console.log("You lost")
+
           }
           
         }
@@ -105,12 +108,12 @@ class App extends Component {
 
         // return the index that was clicked
         // index will become the "returnedArray" variable (let)
+        // indexOfCardClicked === the index the image is currently at in the game
         indexOfCardClicked = index;
 
-        console.log("index of card clicked: " + indexOfCardClicked)
 
+        // returning the index
         return index;
-
 
       } else {
 
@@ -120,19 +123,17 @@ class App extends Component {
 
     });
 
-
-    // if we change this to true, it will run the if statment that calls our game over function
-    // This returns "false" when the page loads
-    const test = clicked[indexOfCardClicked].buttonClicked
-    // console.log("test: " + test)
+    // clicked[indexOfCardClicked].buttonClicked === false (default)
+        // if we change this to true, it will run the if statment that calls our game over function
 
 
 
 
 
-    // this if statement is just saying if the status is still set to === false (default when the page loads) then run the else statement
+    // this if statement is just saying if the status is still set to === false (default when the page loads || no duplicate images have been clicked) 
+    // then run the else statement, shuffle the bored and update the score
 
-    // if the same item has been clicked, this will be changed to *true* (happens in our if statement)
+    // if the same item has been clicked, this will be changed to *true*, then it calls the game over function
     if (clicked[indexOfCardClicked].buttonClicked === true) {
 
       // Call the game over function
@@ -143,6 +144,10 @@ class App extends Component {
 
       // Adding 1 to the score for each click
       this.setState({ score: this.state.score + 1 })
+
+      if (this.state.score >= this.state.maxscore -1) {
+          this.youWon()
+      }
 
       //shuffle the clickers
       this.state.clickers.sort(() => Math.random() - 0.5)
